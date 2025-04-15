@@ -21,6 +21,7 @@ This is a web-based prototype system for processing insurance claims. It include
 | Database     | PostgreSQL             |
 | AI Validation| HuggingFace BART Model |
 | Auth         | JWT                   |
+| Yup+Formik   | Form Input validations |
 | Web Socket.io| For Real-time communication |
 
 ---
