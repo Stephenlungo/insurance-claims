@@ -64,10 +64,12 @@ npm run dev
 
 Starts the server on: http://localhost:5000
 
-🧱 Database Setup
+### 🧱 Database Setup
+
 Initialize Prisma & Migrate DB
 
 npx prisma generate
+
 npx prisma migrate dev --name init
 
 ### ⚙ Frontend Setup
