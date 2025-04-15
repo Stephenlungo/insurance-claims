@@ -1,4 +1,4 @@
-# 🛡️ Insurance Claim Processing System
+# 🛡️ Insurance Claims System
 
 This is a web-based prototype system for processing insurance claims. It includes both a React frontend and a Node.js + Express backend powered by PostgreSQL. The system also integrates an AI-based claim description validator using HuggingFace models.
 
@@ -47,7 +47,9 @@ cd insurance-claim-system
 
 ### ⚙ Backend Setup
 cd backend
+
 npm install
+
 cp .env.example .env
 
 
@@ -61,7 +63,9 @@ npm run dev
 ### ⚙ Frontend Setup
 
 cd ../frontend
+
 npm install
+
 npm start
 
 
