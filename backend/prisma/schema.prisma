@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum ClaimStatus {
+  Pending
+  Under_Review
+  Approved
+  Denied
+  Settled
+}
+
+enum ClaimPriority {
+  Normal
+  High
+}
+
+enum Role {
+  client
+  admin
+}
+
+// User model
+model User {
+  id              Int     @id @default(autoincrement())
+  email           String  @unique
+  password        String
+  role            Role    @default(client)
+
+  claims          Claim[] @relation("ClaimCreator") 
+  reviewedClaims  Claim[] @relation("ClaimReviewer") 
+
+  profile         UserProfile?
+}
+
+// Claims model
+model Claim {
+  id                   Int           @id @default(autoincrement())
+  claim_type           String
+  incident_description String
+  status               ClaimStatus   @default(Pending)
+  priority             ClaimPriority @default(Normal)
+  created_at           DateTime      @default(now())
+
+  user_id              Int
+  user                 User          @relation("ClaimCreator", fields: [user_id], references: [id])
+
+  reviewed_by          Int?
+  reviewer             User?         @relation("ClaimReviewer", fields: [reviewed_by], references: [id])
+  reviewed_at          DateTime?
+  review_comment       String?
+
+  settlement_date      DateTime?     
+  settlement_amount    Float?        
+  payment_reference    String?     
+
+  // Relation to ClaimDocuments
+  documents           ClaimDocument[]
+}
+
+// UserProfile model
+model UserProfile {
+  id              Int     @id @default(autoincrement())
+  user_id         Int     @unique
+  first_name      String
+  last_name       String
+  nrc             String
+  phone           String? 
+  address         String? 
+  created_at      DateTime @default(now()) 
+  updated_at      DateTime @updatedAt 
+
+  user            User    @relation(fields: [user_id], references: [id]) 
+}
+
+// EmailLog model
+model EmailLog {
+  id           Int      @id @default(autoincrement())
+  recipient    String  
+  subject      String  
+  body         String  
+  status       String  
+  error_message String?  
+  created_at    DateTime @default(now()) 
+}
+
+// ClaimDocument model
+model ClaimDocument {
+  id          Int      @id @default(autoincrement())
+  claim_id    Int
+  file_name   String
+  created_at  DateTime @default(now()) 
+
+  claim       Claim    @relation(fields: [claim_id], references: [id]) 
+}
