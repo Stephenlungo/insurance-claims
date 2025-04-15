@@ -21,6 +21,7 @@ This is a web-based prototype system for processing insurance claims. It include
 | Database     | PostgreSQL             |
 | AI Validation| HuggingFace BART Model |
 | Auth         | JWT                   |
+| Prisma         | For ORM             |
 | Yup+Formik   | Form Input validations |
 | Web Socket.io| For Real-time communication |
 
@@ -41,7 +42,7 @@ root/ ├── frontend/ # React frontend ├── backend/ # Express backend 
 
 ### ⚙️ Setup Instructions
 
-#### 1. Clone the Repository
+#### Clone the Repository
 
 ### bash
 git clone https://github.com/your-username/insurance-claim-system.git
@@ -59,8 +60,15 @@ PORT=5000
 DATABASE_URL=postgresql://username:password@localhost:5432/yourdbname
 HUGGINGFACE_API_KEY=your_huggingface_api_key
 
-
 npm run dev
+
+Starts the server on: http://localhost:5000
+
+🧱 Database Setup
+Initialize Prisma & Migrate DB
+
+npx prisma generate
+npx prisma migrate dev --name init
 
 ### ⚙ Frontend Setup
 
@@ -70,4 +78,4 @@ npm install
 
 npm start
 
-
+Starts the server on: http://localhost:3000
