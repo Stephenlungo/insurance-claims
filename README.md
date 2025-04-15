@@ -22,6 +22,7 @@ This is a web-based prototype system for processing insurance claims. It include
 | AI Validation| HuggingFace BART Model |
 | Auth         | JWT                   |
 | Prisma         | For ORM             |
+| nodemailer	 | Sending email notifications |
 | Yup+Formik   | Form Input validations |
 | Web Socket.io| For Real-time communication |
 
