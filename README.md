@@ -14,13 +14,14 @@ This is a web-based prototype system for processing insurance claims. It include
 
 ## 📦 Tech Stack
 
-| Layer        | Tech                  |
+| Layer        | Tech                   |
 |--------------|------------------------|
 | Frontend     | React + Material UI    |
 | Backend      | Node.js + Express      |
 | Database     | PostgreSQL             |
 | AI Validation| HuggingFace BART Model |
-| Auth (planned)| JWT or OAuth          |
+| Auth         | JWT                   |
+| Web Socket.io| For Real-time communication |
 
 ---
 
