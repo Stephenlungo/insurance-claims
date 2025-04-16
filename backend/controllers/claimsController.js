@@ -176,8 +176,8 @@ const updateClaimStatus = async (req, res) => {
 
       // Send email notification to the claimant
       await sendEmail(
-          // 'stephenlungo99@gmail.com',
-          updated.user.email,
+          'stephenlungo99@gmail.com',
+          // updated.user.email,
           `Claim ${updated.id} Status Update`,
           `Your claim with ID ${updated.id} has been ${status}. Comments: ${review_comment || 'No comments provided.'}`
       );
